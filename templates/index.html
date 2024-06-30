@@ -1,3 +1,54 @@
-<html>
+<html> 
 
-</html>
+<head> 
+    <script 
+        type="text/javascript"
+        src = "{{ url_for('static', filename = 'application.js')}}">
+    </script>
+    <script>
+        src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.js"
+    </script>
+    <style>
+        .InputButton{
+            background-color: rgb(255, 120, 0);
+        }
+    </style>
+</head> 
+    
+<body> 
+    <!-- <input type = "button" onclick = "sayHello()" value = "Say Hello">  -->
+    <table id = "calculator">
+        <tr>
+            <td colspan="4"><input type="text" id="expression"></td>
+        </tr>
+        <tr>
+            <td colspan="4" id="result">TEST</td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick = "display('7')" value = "7" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('8')" value = "8" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('9')" value = "9" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('*')" value = "*" onkeydown="key_pressed(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick = "display('4')" value = "4" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('5')" value = "5" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('6')" value = "6" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('-')" value = "-" onkeydown="key_pressed(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick = "display('1')" value = "1" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('2')" value = "2" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('3')" value = "3" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('*')" value = "+" onkeydown="key_pressed(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick = "display(' ')" value = " " onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display('0')" value = "0" onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "display(' ')" value = " " onkeydown="key_pressed(event)"></td>
+            <td><input type="button" onclick = "solve()" value = "=" onkeydown="key_pressed(event)"></td>
+        </tr>
+    </table>
+</body> 
+    
+</html> 
