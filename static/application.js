@@ -1,5 +1,6 @@
 // Declaring the operators in the order of precedence from high to low
 var OPERATORS_STR = "^/*+-"
+var NUMBERS_STR = "0123456789"
 var OPERATORS = []
 for (var i = 0; i < OPERATORS_STR.length; i++){
     OPERATORS.push(OPERATORS_STR.charAt(i));
@@ -130,10 +131,22 @@ function display(character){
 function solve(){
 	expression = document.getElementById("expression").value;
 	result = evaluate(expression)
-	// result = expression;
-	document.getElementById("result").innerHTML = result;
+	document.getElementById("expression").value = result;
+    document.getElementById("history").innerHTML = expression;
 }
 
 function key_pressed(event){
-	x = 5;
+	if (OPERATORS_STR.indexOf(event.key) > -1 || NUMBERS_STR.indexOf(event.key) > -1 || "()".indexOf(event.key) > -1){
+        document.getElementById("expression").value += event.key;
+    } else if (event.key == '='){
+        solve();
+    } else if (event.keyCode == 8){
+        var expression = document.getElementById("expression").value;
+        if (expression.length >= 0){
+            expression = expression.substring(0,expression.length-1);
+        } else {
+            expression = '';
+        }
+        document.getElementById("expression").value = expression;
+    }
 }
