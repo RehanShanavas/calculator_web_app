@@ -21,6 +21,9 @@ function separate_tokens(expression) {
             if (!isNaN(parseInt(char))) {
                 is_reading_number = true;
                 number_read += char;
+            } else if (char == '-' && !is_reading_number && ( token_list.length==0 || OPERATORS.includes(token_list[token_list.length-1]) )) {
+                is_reading_number = true;
+                number_read += char;
             } else {
                 if (is_reading_number) {
                     token_list.push(parseInt(number_read));
@@ -36,6 +39,7 @@ function separate_tokens(expression) {
         token_list.push(parseInt(number_read));
     }
 
+    console.log(token_list)
     return token_list;
 }
 
@@ -48,7 +52,7 @@ function sya(list) {
             queue.push(token);
         } else if (OPERATORS.includes(token)) {
             let token_rank = OPERATORS.indexOf(token);
-            while (stack.length > 0 && OPERATORS.includes(stack[stack.length - 1]) && OPERATORS.indexOf(stack[stack.length - 1]) > token_rank) {
+            while (stack.length > 0 && OPERATORS.includes(stack[stack.length - 1]) && OPERATORS.indexOf(stack[stack.length - 1]) >= token_rank) {
                 queue.push(stack.pop());
             }
             stack.push(token);
