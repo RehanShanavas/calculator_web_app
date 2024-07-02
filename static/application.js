@@ -135,6 +135,13 @@ function solve(){
     document.getElementById("history").innerHTML = expression;
 }
 
+function cleardisplay(){
+    expression = "CLEARED";
+	result = ""
+	document.getElementById("expression").value = result;
+    document.getElementById("history").innerHTML = expression;
+}
+
 function key_pressed(event){
 	if (OPERATORS_STR.indexOf(event.key) > -1 || NUMBERS_STR.indexOf(event.key) > -1 || "()".indexOf(event.key) > -1){
         document.getElementById("expression").value += event.key;
