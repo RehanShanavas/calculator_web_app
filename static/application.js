@@ -164,6 +164,3 @@ function key_pressed(event){
         document.getElementById("expression").value = expression;
     }
 }
-
-t = "5 + 7.5 + 2.5 + 0.5 * 2"
-console.log(evaluate(t))
