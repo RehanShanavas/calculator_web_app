@@ -18,15 +18,18 @@ function separate_tokens(expression) {
         if (char === ' ') {
             continue;
         } else {
-            if (!isNaN(parseInt(char))) {
+            if (!isNaN(parseFloat(char))) {
                 is_reading_number = true;
                 number_read += char;
             } else if (char == '-' && !is_reading_number && ( token_list.length==0 || OPERATORS.includes(token_list[token_list.length-1]) )) {
                 is_reading_number = true;
                 number_read += char;
+            } else if (char == '.'){
+                is_reading_number = true;
+                number_read += char
             } else {
                 if (is_reading_number) {
-                    token_list.push(parseInt(number_read));
+                    token_list.push(parseFloat(number_read));
                     is_reading_number = false;
                     number_read = "";
                 }
@@ -36,7 +39,7 @@ function separate_tokens(expression) {
     }
 
     if (is_reading_number) {
-        token_list.push(parseInt(number_read));
+        token_list.push(parseFloat(number_read));
     }
 
     console.log(token_list)
@@ -48,7 +51,7 @@ function sya(list) {
     let stack = [];
 
     for (let token of list) {
-        if (!isNaN(parseInt(token))) {
+        if (!isNaN(parseFloat(token))) {
             queue.push(token);
         } else if (OPERATORS.includes(token)) {
             let token_rank = OPERATORS.indexOf(token);
@@ -161,3 +164,6 @@ function key_pressed(event){
         document.getElementById("expression").value = expression;
     }
 }
+
+t = "5 + 7.5 + 2.5 + 0.5 * 2"
+console.log(evaluate(t))
